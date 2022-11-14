@@ -9,7 +9,6 @@ const HomePage: NextPage = () => {
   const [translated, setTranslated] = useState('');
 
   const handleTranslate = async () => {
-    console.log(serverConfig.endpoint);
     try {
       const { data } = await axios.post(`${serverConfig.endpoint}translate/`, {
         text: original,
