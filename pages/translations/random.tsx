@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { serverConfig } from '../../config';
 import { toast } from 'react-hot-toast';
-import { Button, Container, Grid, TextField } from '@mui/material';
+import { AppBar, Button, Container, Grid, TextField, Typography } from '@mui/material';
+import Head from 'next/head';
 
 interface Sentence {
   id: number;
@@ -61,8 +62,16 @@ const TranslationRandomCreatePage: NextPage = () => {
   };
 
   return (
-    <Container maxWidth="lg">
-      <Grid container justifyContent="center">
+    <Container maxWidth="md" sx={{ height: '100vh', paddingX: '0 !important', border: 'black 1px solid' }}>
+      <Head>
+        <title>IIUM Tarjamah (Translate Feed)</title>
+      </Head>
+      <AppBar position="static">
+        <Typography variant="h2" component="h1" align="center">
+          IIUM Tarjamah (Translate Feed)
+        </Typography>
+      </AppBar>
+      <Grid container justifyContent="center" px={6}>
         <Grid item container mt={20} mb={4} spacing={6}>
           <Grid item xs={12} md={6}>
             <TextField
@@ -78,7 +87,7 @@ const TranslationRandomCreatePage: NextPage = () => {
             <TextField
               label="Translated sentence (Malay)"
               value={translated}
-              onChange={(event) => setTranslated(event.target.value)}
+              onChange={event => setTranslated(event.target.value)}
               rows={4}
               fullWidth
               multiline
